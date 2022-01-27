@@ -1,0 +1,41 @@
+body {
+	display: flex;
+	flex-flow: column;
+	align-content: center;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	font-family: serif;
+	font-size: 16px;
+}
+main {
+	display: flex;
+	flex-flow: column;
+	align-content: center;
+	align-items: center;
+	max-width: 560px;
+	text-align: center;
+}
+main form {
+	margin-top: 30px;
+}
+main .text {
+	color: #666;
+}
+main #success {
+	display: none;
+	flex-flow: column;
+	align-content: center;
+	align-items: center;
+	margin-top: 30px;
+}
+main #success.visible {
+	display: flex;
+}
+main #success input[name="short"] {
+	max-width: 100%;
+	width: 300px;
+	margin: 15px 0;
+	text-align: center;
+}
