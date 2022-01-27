@@ -42,11 +42,11 @@ class Web {
 		$file = realpath("{$dir}/{$chunk}.php");
 
 		if (strpos($file, $dir) !== 0) {
-			throw new ErrorException('Incorrect chunk name');
+			throw new AppError('Incorrect chunk name');
 		}
 
 		if (!file_exists($file)) {
-			throw new ErrorException('Page not found');
+			throw new AppError('Page not found');
 		}
 
 		return $file;

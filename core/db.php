@@ -10,13 +10,13 @@ class DB {
 		);
 
 		if ( mysqli_connect_errno() ) {
-			throw new ErrorException('Database connection error: ' . mysqli_connect_error());
+			throw new AppError('Database connection error: ' . mysqli_connect_error());
 		}
 
 		$result = $link->query( 'SET NAMES utf8 COLLATE utf8_general_ci' );
 
 		if ($result === false) {
-			throw new ErrorException('Database error: ' . mysqli_connect_error());
+			throw new AppError('Database error: ' . mysqli_connect_error());
 		}
 
 		return $link;
@@ -30,7 +30,7 @@ class DB {
 		}
 
 		if (!$stmt->execute()) {
-			throw new ErrorException('Database query error: ' . $stmt->error);
+			throw new AppError('Database query error: ' . $stmt->error);
 		}
 
 		$result = $stmt->get_result();

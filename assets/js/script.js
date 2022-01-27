@@ -27,9 +27,14 @@
 				$short.focus();
 				$short.select();
 			})
-			.catch(error => {
+			.catch(e => {
 				$button.disabled = false;
-				alert('Server error');
+
+				const message = 'Error: ' + e.data.error;
+
+				console.error(message);
+
+				alert(message);
 			});
 	});
 

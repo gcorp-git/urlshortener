@@ -74,8 +74,8 @@ class App {
 	}
 
 	static function shorten(string $url): string {
-		if (filter_var($url, FILTER_SANITIZE_URL) === false) {
-			throw new ErrorException('Incorrect URL format');
+		if (filter_var($url, FILTER_VALIDATE_URL) === false) {
+			throw new AppError('Incorrect URL format');
 		}
 
 		$data = self::_getBy('original', $url);
@@ -135,7 +135,7 @@ class App {
 		$short = implode('', $chars);
 
 		if (strlen($short) > 11) {
-			throw new ErrorException('Shortened URL length overflow');
+			throw new AppError('Shortened URL length overflow');
 		}
 
 		return $short;
