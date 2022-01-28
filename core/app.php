@@ -43,14 +43,9 @@ class App {
 		switch (true) {
 			case !empty($_POST['url']): {
 				$short = self::shorten($_POST['url']);
-
-				if (!empty($_POST['ajax'])) {
-					$content = $short;
-				} else {
-					$content = web::render('main', [
-						'url' => "https://{$_SERVER['SERVER_NAME']}/{$short}",
-					]);
-				}
+				$content = web::render('main', [
+					'url' => "https://{$_SERVER['SERVER_NAME']}/{$short}",
+				]);
 			} break;
 			case !empty(INPUT): {
 				$args = json_decode(INPUT, true);
