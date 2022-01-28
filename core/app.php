@@ -38,7 +38,7 @@ class App {
 			web::redirect(self::restore($uri));
 		}
 
-		$context = '';
+		$content = '';
 
 		switch (true) {
 			case !empty($_POST['url']): {
