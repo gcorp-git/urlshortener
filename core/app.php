@@ -32,7 +32,7 @@ class App {
 	}
 
 	static function process(): void {
-		$uri = ltrim($_SERVER['REQUEST_URI'], '/');
+		$uri = ltrim(explode('?', $_SERVER['REQUEST_URI'])[0], '/');
 
 		if (!empty($uri)) {
 			web::redirect(self::restore($uri));
@@ -93,7 +93,7 @@ class App {
 		$short = self::_convertIdToShort($data[0]['id']);
 
 		$sql = <<<SQL
-		UPDATE `{$table}` SET `short`=? WHERE `id`=?
+		UPDATE `{$table}` SET `short`=? WHERE BINARY `id`=?
 		SQL;
 
 		db::query(self::$link, $sql, 'si', [$short, $data[0]['id']]);
@@ -105,7 +105,7 @@ class App {
 		$table = self::$tableName;
 
 		$sql = <<<SQL
-		SELECT * FROM `{$table}` WHERE `{$field}`=? LIMIT 1
+		SELECT * FROM `{$table}` WHERE BINARY `{$field}`=? LIMIT 1
 		SQL;
 
 		$result = db::query(self::$link, $sql, 's', [$url]);
